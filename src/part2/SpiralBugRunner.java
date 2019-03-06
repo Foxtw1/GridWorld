@@ -18,39 +18,22 @@
 
 // package part2;
 
-import info.gridworld.actor.Bug;
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
+
+import java.awt.Color;
 
 /**
- * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
- * The implementation of this class is testable on the AP CS A and AB exams.
+ * This class runs a world that contains box bugs. <br />
+ * This class is not tested on the AP CS A and AB exams.
  */
-public class BoxBug extends Bug {
+public class SpiralBugRunner {
 	
-	private int steps;
-	private int sideLength;
-
-	/**
-	 * Constructs a box bug that traces a square of a given side length
-	 * 
-	 * @param length
-	 *            the side length
-	 */
-	public BoxBug(int length) {
-		steps = 0;
-		sideLength = length;
-	}
-
-	/**
-	 * Moves to the next location of the square.
-	 */
-	public void act() {
-		if (steps < sideLength && canMove()) {
-			move();
-			steps++;
-		} else {
-			turn();
-			turn();
-			steps = 0;
-		}
+	public static void main(String[] args) {
+		ActorWorld world = new ActorWorld();
+		SpiralBug alice = new SpiralBug(6);
+		alice.setColor(Color.ORANGE);
+		world.add(new Location(9, 0), alice);
+		world.show();
 	}
 }

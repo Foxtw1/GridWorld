@@ -15,10 +15,21 @@ Part 1
 
 
 Part 2
-1.  length of box in flowers
+1.  Length of box in flowers
 2.  How much to move
 3.  Because each turn method is 45 degrees
 4.  Because move is in the jar file
 5.  The user can change the size of the box in the runner functuion
 6.  Only if the coder changes stuff
 7.  After a 90 degree turn
+
+
+Part 3
+1.  loc1.getRow();
+2.  false
+3.  (x, y - 1)
+4.  135
+5.  trig
+1.  ArrayList<Location> getOccupiedLocations();
+2.  boolean isValid(Mocation loc);
+3.  

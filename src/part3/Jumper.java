@@ -19,17 +19,25 @@
 // package part2;
 
 import info.gridworld.actor.Bug;
+import javafx.scene.shape.MoveTo;
+import java.util.*;
+
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Location;
+
 
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
-public class DancingBug extends Bug {
+public class Jumper extends Bug {
 	
 	private int steps;
     private int sideLength;
-    private int[] turnValue;
-    private int stepsTaken;
+    private int turnValue;
+    
+
+
 
 	/**
 	 * Constructs a box bug that traces a square of a given side length
@@ -37,36 +45,34 @@ public class DancingBug extends Bug {
 	 * @param length
 	 *            the side length
 	 */
-	public DancingBug(int length, int[] turnValues) {
+	public Jumper(int length) {
 		steps = 0;
         sideLength = length;
-		this.turnValue = turnValues;
-		stepsTaken = 0;
 	}
 
 	/**
 	 * Moves to the next location of the square.
 	 */
 	public void act() {
+        ArrayList<Location> occupiedLoc = new ArrayList<Location>();
+        occupiedLoc = getNeighbors();
 
-		if(stepsTaken == turnValue.length){
-			stepsTaken = 0;
+        Location loc1 = new Location(1, 1);
+        System.out.println(loc1);
 
-		}
 
 		if (steps < sideLength && canMove()) {
-			move();
+            move();
             steps++;
-            
-		} else {
-            for(int i = 0; i < turnValue[stepsTaken]; i++){
-                turn();
-            }
+        }
+        else if(!canMove()){
+            moveTo(loc1);
+        }
+        else {
+            turn();
             steps = 0;
-			stepsTaken++;
-
-		}
-		System.out.println(stepsTaken + "   " + turnValue.length);
+            turnValue = turnValue + 45;
+        }
 
 	}
 }

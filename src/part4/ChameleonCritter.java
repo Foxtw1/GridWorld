@@ -17,11 +17,13 @@
  * @author Cay Horstmann
  */
 
-package part4;
+// package part4;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
+// import javafx.scene.paint.Color;
+import java.awt.Color;
 
 import java.util.ArrayList;
 
@@ -31,15 +33,18 @@ import java.util.ArrayList;
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
 public class ChameleonCritter extends Critter {
-	
+	// private int dark;
 	/**
 	 * Randomly selects a neighbor and changes this critter's color to be the
 	 * same as that neighbor's. If there are no neighbors, no action is taken.
 	 */
 	public void processActors(ArrayList<Actor> actors) {
 		int n = actors.size();
-		if (n == 0)
+		if (n == 0){
+			super.setColor(darken(5));
+
 			return;
+		}
 		int r = (int) (Math.random() * n);
 
 		Actor other = actors.get(r);
@@ -52,5 +57,19 @@ public class ChameleonCritter extends Critter {
 	public void makeMove(Location loc) {
 		setDirection(getLocation().getDirectionToward(loc));
 		super.makeMove(loc);
+	}
+
+	public Color darken(int dark){
+		Color color = getColor();
+		int red = (int) (color.getRed() - (1 * dark));
+		int blue = (int) (color.getBlue() - (1 * dark));
+		int green = (int) (color.getGreen() - (1 * dark));
+		if(red == 25){
+			red = 250;
+			blue = 250;
+			green = 250;
+		}
+		Color col = new Color(red, green, blue, 100);
+		return col;
 	}
 }

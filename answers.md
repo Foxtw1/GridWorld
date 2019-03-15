@@ -32,4 +32,15 @@ Part 3
 5.  trig
 1.  ArrayList<Location> getOccupiedLocations();
 2.  boolean isValid(Mocation loc);
-3.  
+
+
+Part 4
+1.  act, getActors, processActors, getMoveLocations, selectMoveLocations, makeMove
+2.  
+3.  Yes
+4.  getLocation, getColor, getDirectionTowards
+5.  directionTowrds, Location, makeMove
+6.  
+
+
+
